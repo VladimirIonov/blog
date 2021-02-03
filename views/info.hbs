@@ -10,28 +10,19 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 
 <body>
 <header>
-<h1 class="text-center m-4">Заметки</h1>
+<h1 class="text-center m-4">{{title}}</h1>
 </header>
 
 <div class="container">
 <div class="row">
-{{#each notes}}
-<div class="col-sm-6 p-2">
-<div class="card">
-<div class="card-body">
-<h5 class="card-title">{{title}}</h5>
-<p class="card-text">{{text}}</p>
-<a href="/info/{{id}}" class="btn btn-primary">Подробнее</a>
-</div>
-</div>
-</div>
-{{/each}}
+<p>{{text}}</p>
 </div>
 </div>
 
 <footer>
-<p class="text-center">&COPY; VladimirIonov</p>
+<p class="text-center text-secondary">&COPY; VladimirIonov</p>
 </footer>
 </body>
 
 </html>
+
