@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+
+ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul:after {
+    display: block;
+    content: ' ';
+    clear: both;
+    float: none;
+}
+
+ul.menu > li {
+    float: left;
+    position: relative;
+}
+ul.menu > li > a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    text-decoration: none;
+}
+ul.menu > li > a:hover {
+    background-color: black;
+}
+ul.submenu {
+    display: none;
+    position: absolute;
+    width: 150px;
+    top: 37px;
+    left: 0;
+    background-color: white;
+    border: 1px solid rgb(133, 133, 133);
+    z-index: 20;
+}
+ul.submenu > li {
+    display: block;
+}
+ul.submenu > li > a {
+    display: block;
+    padding: 10px;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+ul.submenu > li > a:hover {
+    text-decoration: underline;
+}
+ul.menu > li:hover > ul.submenu {
+    display: block;
+}
+    </style>
+</head>
+<meta charset="UTF-8">
+<title>Заметки</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<header >
+<div style="background-color: rgba(0, 0, 0, 0.2)">   
+<ul class="menu">
+    <li><a href="http://localhost:2000/">Главная</a>
+       
+    </li>
+    <li><a href=#>Список заметок</a>
+        <ul class="submenu">
+             {{#each notes}}
+            <li><a href="/info/{{id}}">{{title}}</a></li>
+{{/each}}
+        </ul>
+    </li>
+</ul>
+</div>
+</header>
+<body>
+{{{body}}}
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer>
+<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://mdbootstrap.com/">VladimirIonov</a>
+  </div>
+</footer>
+</body>
+
+</html>
