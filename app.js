@@ -1,13 +1,28 @@
 const express = require("express");
 const fs = require("fs");
 const bodyParser = require('body-parser');
+const { request } = require("express");
 
 const app = express();
 const port = 2000;
-
+const auth = {
+    login: "admin",
+    pass:"1234"
+}
 app.set("view engine", "hbs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/admin",(request, response, next) => {
+    const user = request.query;
+    
+    if (!user || user.login != auth.login || user.pass != auth.pass) {
+    response.header({"Content-Type": "text/html; charset=utf-8"});
+    response.status(401);
+    response.send("Ошибка авторизации!");
+    }
+    next();
+    });
 
 app.listen(port, () => {
 console.log(`App is running on http://localhost:${port}/`);
@@ -33,6 +48,9 @@ response.render("info", notes[0]);
 
 app.get("/admin/edit/:id", (request, response) => {
 const id = request.params.id;
+const user = request.query;
+
+
 const file = fs.readFileSync("./data/notes.json");
 const model = JSON.parse(file);
 const notes = model.notes.filter(x => x.id == id);
@@ -78,7 +96,22 @@ fs.writeFileSync("./data/notes.json", json);
 
 response.redirect("/");
 });
+app.get("/admin/delete/:id", (request, response) => {
+    let id = request.params.id;
 
-app.get("/*", (request, response) => {
-response.redirect("/");
-}); 
+    if (!id) response.redirect("/");
+    id = Number(id);
+    
+    const file = fs.readFileSync("./data/notes.json");
+    const model = JSON.parse(file);
+    model.notes = model.notes.filter(x => x.id != id);
+    
+    const json = JSON.stringify(model);
+    fs.writeFileSync("./data/notes.json", json);
+    
+    response.redirect("/");
+    });
+    
+    app.get("/*", (request, response) => {
+    response.redirect("/");
+    });
