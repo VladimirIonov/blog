@@ -4,21 +4,21 @@
 
 <div class="container">
 <div class="row">
-<form action="/admin/edit" method="POST">
+<form action="/admin/edit" method="POST" background="https://funart.pro/uploads/posts/2020-04/1587325118_16-p-belie-foni-30.jpg">
 <input name="id" hidden value="{{id}}">
 
 <div>
-<label for="title">Название</label>
-<input id="title" name="title" value="{{title}}">
+<p style="text-align: center;">Название</p>
+<input style="width:400px; " id="title" name="title" value="{{title}}">
 </div>
 
 <div>
-<label for="text">Описание</label>
-<textarea id="text" name="text">{{text}}</textarea>
+<p style="text-align: center;">Описание</p>
+<textarea style="width:400px; height:250px" id="text" name="text">{{text}}</textarea>
 </div>
 <div>
-<label for="predtext">Ключевые слова</label>
-<input id="predtext" name="predtext" value="{{predtext}}">
+<p style="text-align: center;">Ключевые слова</p>
+<textarea style="width:400px; height:150px" id="predtext" name="predtext" >{{predtext}}</textarea>
 </div>
 <div>
 <button type="reset">Очистить</button>
