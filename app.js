@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { request } = require("express");
 
 const app = express();
-const port = 2000;
+const port = process.env.PORT || 2000;
 const auth = {
     login: "admin",
     pass:"1234"
