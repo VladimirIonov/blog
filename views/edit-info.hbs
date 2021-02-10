@@ -4,20 +4,24 @@
 
 <div class="container">
 <div class="row">
-<form action="/edit">
-<input id="id" hidden>
+<form action="/admin/edit" method="POST">
+<input name="id" hidden value="{{id}}">
 
 <div>
-<label for="title"></label>
-<input id="title">
+<label for="title">Название</label>
+<input id="title" name="title" value="{{title}}">
 </div>
 
 <div>
-<label for="text"></label>
-<input id="text">
+<label for="text">Описание</label>
+<textarea id="text" name="text">{{text}}</textarea>
 </div>
-
 <div>
+<label for="predtext">Ключевые слова</label>
+<input id="predtext" name="predtext" value="{{predtext}}">
+</div>
+<div>
+<button type="reset">Очистить</button>
 <button>Сохранить</button>
 </div>
 </form>
